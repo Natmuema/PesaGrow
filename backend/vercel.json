@@ -1,10 +1,19 @@
 {
     "version": 2,
     "builds": [
-        { "src": "auth/wsgi.py", "use": "@vercel/python",
-          "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" } }
+        { 
+            "src": "auth/wsgi.py", 
+            "use": "@vercel/python",
+            "config": { 
+                "maxLambdaSize": "50mb", 
+                "runtime": "python3.9" 
+            } 
+        }
     ],
     "routes": [
         { "src": "/(.*)", "dest": "auth/wsgi.py" }
-    ]
+    ],
+    "env": {
+        "PYTHONPATH": "/var/task"
+    }
 }
